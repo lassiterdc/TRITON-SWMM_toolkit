@@ -1,4 +1,0 @@
-input_file: "example.inp"
-output_dir: "results"
-timestep: 5
-verbose: true

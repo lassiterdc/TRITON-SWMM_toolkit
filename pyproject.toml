@@ -14,7 +14,28 @@ classifiers = [
 ]
 license = {text = "MIT"}
 dependencies = [
-  "typer"
+  "typer",
+  "pydantic",
+  "pathlib",
+  "PyYAML",
+  "zarr",
+  "netCDF4",
+  "scipy",
+  "pydap",
+  "h5netcdf",
+  "cftime",
+  "iris",
+  "bottleneck",
+  "numbagg",
+  "dask",
+  "matplotlib",
+  "cartopy",
+  "geopandas",
+  "seaborn",
+  "nc-time-axis",
+  "sparse",
+  "pint",
+  "bagit"
 ]
 requires-python = ">= 3.10"
 
@@ -25,6 +46,7 @@ test = [
     "ruff",  # linting
     "ty", # checking types
     "ipdb", # debugging
+    "hsclient", # for accessing hydroshare files to reproduce examples
 ]
 
 [project.urls]
@@ -59,3 +81,11 @@ package = true
 [tool.esbonio.sphinx]
 buildCommand = ["sphinx-build", "-b", "html", "docs", "docs/_build"]
 pythonCommand = ["C:\\Users\\Daniel\\anaconda3\\envs\\FloodAttribution\\python.exe"]
+
+[tool.setuptools.package-data]
+your_package = [
+    "examples/*.yaml",
+    "examples/*.md",
+    "examples/*.xlsx",
+    "examples/*.csv"
+]

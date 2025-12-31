@@ -1,0 +1,32 @@
+ifdef ACTIVE_GPU
+	CC := nvcc -ccbin CC
+	INC_DIRS := /opt/cray/pe/mpich/8.1.6/ofi/gnu/9.1/include
+	FLAGS := -arch=sm_70 -x cu
+	LIB_DIRS := 
+	LIBRARIES := -L$(CUDA_DIR)/targets/ppc64le-linux/lib/stubs -L/opt/cray/pe/mpich/8.1.6/ofi/gnu/9.1/lib -lnvidia-ml
+	DFLAGS := -DACTIVE_GPU=1
+ifdef SWMM_TRITON
+	DFLAGS += -DSWMM_TRITON=1
+	LIB_DIRS := -L./Stormwater-Management-Model/build/bin
+	LIBRARIES += -lswmm5
+endif
+else
+	CC := CC
+	INC_DIRS := /opt/cray/pe/mpich/8.1.6/ofi/gnu/9.1/include
+	FLAGS := -Wall -fopenmp
+	LIB_DIRS := 
+	LIBRARIES := -L/opt/cray/pe/mpich/8.1.6/ofi/gnu/9.1/lib 
+	DFLAGS := -DACTIVE_OMP=1
+ifdef SWMM_TRITON
+	DFLAGS += -DSWMM_TRITON=1
+	LIB_DIRS := -L./Stormwater-Management-Model/build/bin
+	LIBRARIES += -lswmm5
+endif
+
+endif
+
+triton: src/main.cpp
+	if [ ! -d "build" ]; then mkdir build; fi
+	@echo 'Compiling file: $<'
+	$(CC) $(INC_DIRS:%=-I%) $(FLAGS) $(DFLAGS) -O3 -o "build/$@" "$<" --std=c++14 $(LIB_DIRS) $(LIBRARIES)
+	@echo 'Building finished: $@'

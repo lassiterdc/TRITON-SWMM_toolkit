@@ -1,0 +1,32 @@
+ifdef ACTIVE_GPU
+	CC := nvcc
+	INC_DIRS := 
+	FLAGS := --compiler-bindir `which mpic++` -arch=sm_70 -x cu
+	LIB_DIRS := 
+	LIBRARIES := 
+	DFLAGS := -DACTIVE_GPU=1
+ifdef SWMM_TRITON
+	DFLAGS += -DSWMM_TRITON=1
+	LIB_DIRS := -L./Stormwater-Management-Model/build/bin
+	LIBRARIES := -lswmm5
+endif
+else
+	CC := mpic++
+	INC_DIRS := 
+	FLAGS := -Wall -fopenmp
+	LIB_DIRS := 
+	LIBRARIES := 
+	DFLAGS := -DACTIVE_OMP=1
+ifdef SWMM_TRITON
+	DFLAGS += -DSWMM_TRITON=1
+	LIB_DIRS := -L./Stormwater-Management-Model/build/bin
+	LIBRARIES := -lswmm5
+endif
+
+endif
+
+triton: src/main.cpp
+	if [ ! -d "build" ]; then mkdir build; fi
+	@echo 'Compiling file: $<'
+	$(CC) $(INC_DIRS:%=-I%) $(FLAGS) $(DFLAGS) -O3 -o "build/$@" "$<" --std=c++14 $(LIB_DIRS) $(LIBRARIES)
+	@echo 'Building finished: $@'

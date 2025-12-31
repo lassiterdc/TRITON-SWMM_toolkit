@@ -2,7 +2,8 @@
 
 import typer
 from rich.console import Console
-from TRITON_SWMM_toolkit import run_model
+
+# from TRITON_SWMM_toolkit import run_model
 
 app = typer.Typer()
 console = Console()
@@ -16,7 +17,7 @@ def main(
     """Run TRITON-SWMM in terminal (TUI)."""
 
     console.print(f"[bold green]Running TRITON-SWMM with config:[/bold green] {config}")
-    run_model(config_path=config, verbose=verbose)
+    # run_model(config_path=config, verbose=verbose)
     console.print("[bold blue]Simulation finished![/bold blue]")
 
 

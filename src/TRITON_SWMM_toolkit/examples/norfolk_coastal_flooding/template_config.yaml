@@ -1,0 +1,4 @@
+variable_boundary_condition: "{DATA_DIR}/variable_bc.shp"
+watershed_shapefile: "{DATA_DIR}/norfolk_wshed_epsg32147_state_plane_m.shp"
+mannings_file: "{DATA}/mannings_norfolk_4.dem"
+DEM: "{DATA}/norfolk_4.dem"

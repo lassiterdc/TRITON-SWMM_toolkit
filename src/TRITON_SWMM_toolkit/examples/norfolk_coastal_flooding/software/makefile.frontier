@@ -1,0 +1,42 @@
+ifdef ACTIVE_GPU
+	CC := hipcc
+	INC_DIRS := $(ROCM_PATH)/include/hip $(MPICH_DIR)/include
+	LIB_DIRS := -L$(MPICH_DIR)/lib -L$(HIP_LIB_PATH)
+	FLAGS := --rocm-path=$(ROCM_PATH) --offload-arch=gfx90a -x hip
+	LIBRARIES := -lmpi
+	GTL_LIBS := $(PE_MPICH_GTL_DIR_amd_gfx90a) $(PE_MPICH_GTL_LIBS_amd_gfx90a)
+	DFLAGS := -D__HIP_ROCclr__ -D__HIP_ARCH_GFX90A__=1 -DACTIVE_GPU=1 -DAMDGPU=1
+ifdef SWMM_TRITON
+	DFLAGS += -DSWMM_TRITON=1
+	LIB_DIRS += -L$(abspath Stormwater-Management-Model/build/bin)
+	LIBRARIES += -lswmm5
+endif
+else
+	CC := mpic++
+	INC_DIRS := $(MPICH_DIR)/include
+	FLAGS := -Wall -fopenmp
+	LIB_DIRS := -lmpi 
+	LIBRARIES := 
+	DFLAGS := -DACTIVE_OMP=1
+ifdef SWMM_TRITON
+	DFLAGS += -DSWMM_TRITON=1
+	LIB_DIRS += -L./Stormwater-Management-Model/build/bin
+	LIBRARIES += -lswmm5
+endif
+endif
+
+triton: $(SRCDIR)/main.cpp
+	if [ ! -d "$(BUILDDIR)" ]; then mkdir $(BUILDDIR); fi
+	@echo 'Compiling file: $<'
+	$(CC) \
+		$(INC_DIRS:%=-I%) \
+		$(LIB_DIRS) \
+		$(FLAGS) \
+		$(DFLAGS) \
+		-O3 \
+		$(LIBRARIES) \
+		$(GTL_LIBS) \
+		--std=c++17 \
+		-o "$(BUILDDIR)/$@" "$<"
+	@echo 'Building finished: $@'
+
