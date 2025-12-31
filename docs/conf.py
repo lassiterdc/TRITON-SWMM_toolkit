@@ -19,7 +19,7 @@ extensions = [
     "sphinx.ext.napoleon",  # for Google/NumPy style docstrings
     "nbsphinx",  # for jupyter hosting jupyter notebooks
     "sphinx.ext.mathjax",  # optional, if you use math
-    "myst_nb",
+    # "myst_nb",
 ]
 
 nbsphinx_execute = "never"
@@ -35,3 +35,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
+
+import glob
+
+print("Notebooks found by Sphinx:", glob.glob("*.ipynb"))
