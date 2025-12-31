@@ -22,6 +22,10 @@ extensions = [
     "myst_nb",
 ]
 
+nbsphinx_execute = "never"
+nbsphinx_allow_errors = True
+jupyter_execute_notebooks = "off"
+
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 

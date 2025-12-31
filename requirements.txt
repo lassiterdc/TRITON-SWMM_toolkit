@@ -1,2 +1,5 @@
 sphinx
 sphinx-rtd-theme
+nbsphinx
+myst-nb  # only if you use MyST
+jupyter
