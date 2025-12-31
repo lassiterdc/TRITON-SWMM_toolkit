@@ -85,20 +85,37 @@ def sign_into_hydroshare():
     return hs
 
 
-def retrieve_norfolk_config():
+download_if_exists = DOWNLOAD_EXAMPLES_IF_ALREADY_EXIST
+
+
+def retrieve_norfolk_config(
+    download_if_exists=DOWNLOAD_EXAMPLES_IF_ALREADY_EXIST,
+):
     case_details = load_case_study_deets(NORFOLK_EX)
     res_identifier = case_details["res_identifier"]  # will come from the case yaml
     target = get_data_root() / "examples" / NORFOLK_EX
-    if target.exists() and not DOWNLOAD_EXAMPLES_IF_ALREADY_EXIST:
-        return
-    else:
-        hs = sign_into_hydroshare()
-        download_data_from_hydroshare(res_identifier, target, hs)
-
     data_dir = target / "data" / "contents"
     cfg_template = load_case_study_template_config(NORFOLK_EX)
     cfg_filled = {
         key: value.format(DATA_DIR=str(data_dir), DATA=str(data_dir))
         for key, value in cfg_template.items()
     }
-    return load_toolkit_config(cfg_filled)
+
+    if target.exists() and not download_if_exists:
+        pass
+    else:
+        hs = sign_into_hydroshare()
+        download_data_from_hydroshare(
+            res_identifier, target, hs, download_if_exists=download_if_exists
+        )
+
+    model = load_toolkit_config(cfg_filled)
+
+    zipped_software = Path(str(model.TRITONSWMM_software_directory) + ".zip")
+
+    with ZipFile(zipped_software, "r") as z:
+        z.extractall(model.TRITONSWMM_software_directory.parent)
+
+    zipped_software.unlink()
+
+    return model
