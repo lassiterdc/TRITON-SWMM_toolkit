@@ -97,10 +97,14 @@ def retrieve_norfolk_config(
     data_dir = target / "data" / "contents"
     cfg_template = load_case_study_template_config(NORFOLK_EX)
     cfg_filled = {
-        key: value.format(DATA_DIR=str(data_dir), DATA=str(data_dir))
+        key: (
+            value.format(DATA_DIR=str(data_dir), DATA=str(data_dir))
+            if isinstance(value, str)
+            else value
+        )
         for key, value in cfg_template.items()
     }
-
+    model = load_toolkit_config(cfg_filled)
     if target.exists() and not download_if_exists:
         pass
     else:
@@ -109,13 +113,11 @@ def retrieve_norfolk_config(
             res_identifier, target, hs, download_if_exists=download_if_exists
         )
 
-    model = load_toolkit_config(cfg_filled)
+        zipped_software = Path(str(model.TRITONSWMM_software_directory) + ".zip")
 
-    zipped_software = Path(str(model.TRITONSWMM_software_directory) + ".zip")
+        with ZipFile(zipped_software, "r") as z:
+            z.extractall(model.TRITONSWMM_software_directory.parent)
 
-    with ZipFile(zipped_software, "r") as z:
-        z.extractall(model.TRITONSWMM_software_directory.parent)
-
-    zipped_software.unlink()
+        zipped_software.unlink()
 
     return model

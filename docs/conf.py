@@ -17,7 +17,7 @@ release = "0.1.0"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",  # for Google/NumPy style docstrings
-    "nbsphinx",  # for jupyter hosting jupyter notebooks
+    "nbsphinx",  # for showing the python notebook
     "sphinx.ext.mathjax",  # optional, if you use math
     # "myst_nb",
 ]

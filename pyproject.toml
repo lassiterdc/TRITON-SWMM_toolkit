@@ -14,39 +14,11 @@ classifiers = [
 ]
 license = {text = "MIT"}
 dependencies = [
-  "typer",
-  "pydantic",
-  "pathlib",
-  "PyYAML",
-  "zarr",
-  "netCDF4",
-  "scipy",
-  "pydap",
-  "h5netcdf",
-  "cftime",
-  "iris",
-  "bottleneck",
-  "numbagg",
-  "dask",
-  "matplotlib",
-  "cartopy",
-  "geopandas",
-  "seaborn",
-  "nc-time-axis",
-  "sparse",
-  "pint",
-  "bagit"
 ]
 requires-python = ">= 3.10"
 
 [project.optional-dependencies]
 test = [
-    "coverage",  # testing
-    "pytest",  # testing
-    "ruff",  # linting
-    "ty", # checking types
-    "ipdb", # debugging
-    "hsclient", # for accessing hydroshare files to reproduce examples
 ]
 
 [project.urls]

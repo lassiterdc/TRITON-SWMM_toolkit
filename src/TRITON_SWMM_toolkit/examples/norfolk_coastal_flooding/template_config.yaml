@@ -1,9 +1,10 @@
+# FILEPATHS
 variable_boundary_condition: "{DATA_DIR}/variable_bc.shp"
-watershed_shapefile: "{DATA_DIR}/norfolk_wshed_epsg32147_state_plane_m.shp"
+watershed_shapefile: "{DATA_DIR}/shp_watershed/norfolk_wshed_epsg32147_state_plane_m.shp"
 mannings_file: "{DATA}/mannings_norfolk_4.dem"
 DEM_processed: "{DATA}/norfolk_4.dem"
 DEM_fullres: "{DATA}/fullres_dem_m.tif"
-landuse_lookup: "{DATA}/landuse_lookup_tables.xlsx"
+landuse_lookup_file: "{DATA}/landuse_lookup_tables.csv"
 SWMM_hydraulics: "{DATA}/hague_hydraulics_model_template.inp"
 SWMM_hydrology: "{DATA}/hague_hydrology_model_template.inp"
 SWMM_full: "{DATA}/hague_full_model_template.inp"
@@ -12,3 +13,14 @@ TRITONSWMM_software_directory: "{DATA}/software"
 weather_timeseries: "{DATA}/obs_event_tseries_from_yrs_with_complete_coverage.nc"
 weather_event_summary_csv: "{DATA}/obs_event_summaries_from_yrs_with_complete_coverage.csv"
 subcatchment_raingage_mapping: "{DATA}/b_sub_ids_and_mrms_rain_col.csv"
+benchmarking_experiment: "{DATA}/benchmarking_experiment.xlsx"
+# ATTRIBUTE NAMES
+landuse_description_colname: "original_description"
+landuse_lookup_class_id_colname: "CLASS_ID"
+landuse_lookup_mannings_colname: "mannings"
+landuse_plot_color_colname: "plot_color"
+# CONSTANTS
+dem_outside_watershed_height: 9999 # meters
+dem_building_height: 80 # meters
+# PARAMETERS
+target_dem_resolution: 3.5 # meters
