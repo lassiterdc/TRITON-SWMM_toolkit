@@ -18,4 +18,5 @@ documentation for details.
    installation
    usage
    tutorial_norfolk_case_study.ipynb
+   diagram.rst
 

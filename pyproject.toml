@@ -9,9 +9,8 @@ authors = [
 maintainers = [
   {name = "Daniel Lassiter", email = "daniel.lassiter@outlook.com"}
 ]
-classifiers = [
-    # TODO
-]
+classifiers = []
+
 license = {text = "MIT"}
 dependencies = [
 ]
@@ -30,9 +29,7 @@ homepage = "https://github.com/lassiterdc/TRITON_SWMM_toolkit"
 TRITON_SWMM_toolkit = "TRITON_SWMM_toolkit.cli:app"
 
 [tool.ty]
-# All rules are enabled as "error" by default; no need to specify unless overriding.
-# Example override: relax a rule for the entire project (uncomment if needed).
-# rules.TY015 = "warn"  # For invalid-argument-type, warn instead of error.
+enabled = true  # dummy key so TOML parser doesnt choke
 
 [tool.ruff]
 line-length = 120
@@ -52,10 +49,10 @@ package = true
 
 [tool.esbonio.sphinx]
 buildCommand = ["sphinx-build", "-b", "html", "docs", "docs/_build"]
-pythonCommand = ["C:\\Users\\Daniel\\anaconda3\\envs\\FloodAttribution\\python.exe"]
+pythonCommand = ["C:\\Users\\Daniel\\anaconda3\\envs\\triton_swmm_toolkit\\python.exe"]
 
 [tool.setuptools.package-data]
-your_package = [
+TRITON_SWMM_toolkit = [
     "examples/*.yaml",
     "examples/*.md",
     "examples/*.xlsx",

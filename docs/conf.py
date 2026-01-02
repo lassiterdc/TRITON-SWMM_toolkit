@@ -19,7 +19,7 @@ extensions = [
     "sphinx.ext.napoleon",  # for Google/NumPy style docstrings
     "nbsphinx",  # for showing the python notebook
     "sphinx.ext.mathjax",  # optional, if you use math
-    # "myst_nb",
+    "sphinxcontrib.mermaid",
 ]
 
 nbsphinx_execute = "never"
@@ -36,6 +36,9 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
-import glob
-
-print("Notebooks found by Sphinx:", glob.glob("*.ipynb"))
+mermaid_init_js = """
+mermaid.initialize({
+  theme: 'default',
+  flowchart: { useMaxWidth: true }
+});
+"""
