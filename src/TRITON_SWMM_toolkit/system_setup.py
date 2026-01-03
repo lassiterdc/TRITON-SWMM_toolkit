@@ -1,5 +1,5 @@
 # %%
-from TRITON_SWMM_toolkit.config import TS_config
+from TRITON_SWMM_toolkit.config import system_config
 import pandas as pd
 import rioxarray as rxr
 import numpy as np

@@ -11,7 +11,7 @@ from pathlib import Path
 import xarray as xr
 from typing import Optional
 from matplotlib.axes import Axes
-from TRITON_SWMM_toolkit.prepare_simulations import create_mannings_raster
+from TRITON_SWMM_toolkit.system_setup import create_mannings_raster
 
 
 def plot_polygon_boundary_on_ax(ax, shp_path: Path, color="black", linewidth=1):
@@ -270,3 +270,7 @@ def plot_fullres_vs_coarse_mannings(
     )
     ax2.set_title("coarsened res mannings")
     return axes
+
+
+# TODO
+# - include the boundary condition shapefile in plots; add an option to include a callout with a description

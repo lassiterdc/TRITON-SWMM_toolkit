@@ -44,3 +44,5 @@ dependencies:
   - pip
   - pip:
       - hsclient
+      - pyswmm
+      - swmmio

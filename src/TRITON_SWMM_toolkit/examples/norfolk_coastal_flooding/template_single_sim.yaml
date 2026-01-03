@@ -1,0 +1,3 @@
+weather_event_indexers: {"year":9, "event_type":"compound", "event_id":1}
+event_description: "Hurricane Irene 8-27-2011"
+experiment_folder: "{DATA}/single_sim"
