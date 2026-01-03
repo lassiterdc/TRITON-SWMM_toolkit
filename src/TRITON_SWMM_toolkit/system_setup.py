@@ -8,6 +8,9 @@ from pathlib import Path
 from rasterio.enums import Resampling
 import sys
 
+# TODO - define a function like define_simulation_paths in preparing_simulations.py that will generate a system folder and system-specific processed outputs like DEM and mannings;
+#           - remove those from the system config file and pydantic model
+
 
 def create_mannings_raster(
     landuse_lookup: Path,
