@@ -25,7 +25,7 @@ pytestmark = pytest.mark.skipif(not on_UVA_HPC(), reason="Only runs on UVA HPC")
 
 
 def test_consolidated_workflow_with_system_inputs_and_compilation():
-    nrflk_multisim_ensemble = tst.retreive_norfolk_UVA_sensitivtiy_CPU(
+    nrflk_multisim_ensemble = tst.retreive_norfolk_UVA_sensitivtiy_CPU_minimal(
         start_from_scratch=True
     )
     analysis = nrflk_multisim_ensemble.system.analysis
@@ -86,7 +86,7 @@ def test_consolidated_workflow_with_system_inputs_and_compilation():
     mannings_file = system.sys_paths.mannings_processed
     assert mannings_file.exists(), "Mannings file should be created"
 
-    assert sensitivity.compilation_successful, "TRITON-SWMM should be compiled"
+    assert system.compilation_successful, "TRITON-SWMM should be compiled"
 
     # Verify Phase 2 outputs (simulations ran)
     assert sensitivity.all_scenarios_created, "All scenarios should be created"
