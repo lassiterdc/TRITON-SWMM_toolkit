@@ -228,3 +228,9 @@ dist/
 *.nc4
 *.zarr
 *.h5
+
+/CLAUDE.md
+
+/AGENTS.md
+
+/.claude/
