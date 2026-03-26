@@ -100,6 +100,9 @@ FRONTIER_GLOBUS_PROJECT_BASE = "/lustre/orion/atm112/proj-shared"
 DESKTOP_GLOBUS_COLLECTION_NAME = "Desktop"
 DESKTOP_GLOBUS_COLLECTION_UUID = "507d4181-1fe7-11f1-8543-02ea150f82e1"
 
+LAPTOP_GLOBUS_COLLECTION_NAME = "personal_laptop"
+LAPTOP_GLOBUS_COLLECTION_UUID = "d6980688-1d51-11ec-a47a-a50ad076c282"
+
 # System-name-to-endpoint mapping for PostRunTransferConfig.
 # Keys are system names matching PlatformConfig.name values.
 # Values are (source_uuid, scratch_base, needs_data_access, session_domain) tuples.

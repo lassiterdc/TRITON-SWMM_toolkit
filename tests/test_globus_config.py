@@ -110,7 +110,7 @@ class TestToTransferSpec:
             analysis_id="my_analysis",
         )
         assert spec.endpoints.source_uuid == "36d521b3-c182-4071-b7d5-91db5d380d42"
-        assert spec.endpoints.destination_uuid == "507d4181-1fe7-11f1-8543-02ea150f82e1"
+        assert spec.endpoints.destination_uuid == "d6980688-1d51-11ec-a47a-a50ad076c282"
         assert len(spec.items) == 1
         assert spec.items[0].source_path == "/lustre/orion/atm112/scratch/user/my_analysis"
         assert spec.items[0].destination_path == "/D/Dropbox/results/my_analysis"
