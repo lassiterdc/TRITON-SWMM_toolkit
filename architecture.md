@@ -90,7 +90,7 @@ Configuration flows: **YAML → Pydantic → Analysis/Scenario classes**
 - `system_config`: DEM paths, TRITON compilation, Manning's coefficients
 - `analysis_config`: Simulation parameters, HPC settings, weather data, execution mode
 
-Many fields are conditionally required based on boolean toggles. Call `analysis.validate().raise_if_invalid()` before launching simulations (`src/TRITON_SWMM_toolkit/validation.py`).
+Many fields are conditionally required based on boolean toggles. Call `analysis.validate().raise_if_invalid()` before launching simulations (`src/hhemt/validation.py`).
 
 ### Critical Configuration Fields
 
@@ -126,7 +126,7 @@ Key env vars: `SLURM_JOB_ID`, `SLURM_ARRAY_TASK_ID` (maps to `event_iloc`), `add
 
 ## Conda Environment
 
-The working environment is defined in `workflow/envs/triton_swmm.yaml` — all dependencies for development, testing, and simulation. Update this file when adding new dependencies.
+The working environment is defined in `workflow/envs/hhemt.yaml` — all dependencies for development, testing, and simulation. Update this file when adding new dependencies.
 
 Note: `environment.yaml` at the repo root and the `conda:` directives in generated Snakefiles are scaffolding for a potential future two-environment split, but are not currently active (Snakemake is not invoked with `--use-conda`).
 

@@ -3,7 +3,7 @@
 import pytest
 from pathlib import Path
 
-from TRITON_SWMM_toolkit.profile_catalog import (
+from hhemt.profile_catalog import (
     ProfileCatalog,
     HPCSettings,
     WorkflowSettings,
@@ -14,7 +14,7 @@ from TRITON_SWMM_toolkit.profile_catalog import (
     merge_hpc_settings,
     merge_workflow_settings,
 )
-from TRITON_SWMM_toolkit.exceptions import ConfigurationError, CLIValidationError
+from hhemt.exceptions import ConfigurationError, CLIValidationError
 
 
 def test_hpc_settings_validation():

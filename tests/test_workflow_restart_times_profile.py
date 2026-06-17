@@ -26,7 +26,7 @@ def slurm_ready_builder():
     assert requires ``local_cpu_cores_for_workflow`` for every mode. Set them
     explicitly so all three modes emit without skipping.
     """
-    from TRITON_SWMM_toolkit.workflow import SnakemakeWorkflowBuilder
+    from hhemt.workflow import SnakemakeWorkflowBuilder
 
     case = cases.Local_TestCases.retrieve_norfolk_multi_sim_test_case(start_from_scratch=False)
     analysis = case.analysis

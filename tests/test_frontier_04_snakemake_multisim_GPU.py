@@ -8,9 +8,9 @@ pytestmark = [
     ),
 ]
 
-# cd /lustre/orion/cli190/proj-shared/dcl3nd/TRITON-SWMM_toolkit
+# cd /lustre/orion/cli190/proj-shared/dcl3nd/hhemt
 # salloc -A CLI190 -p batch -t 0-02:00:00 -N 2 --cpus-per-task=1 --ntasks-per-node=32 --gres=gpu:2 -q debug --mem=0
-# conda activate triton_swmm_toolkit
+# conda activate hhemt
 
 
 @pytest.mark.slow

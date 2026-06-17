@@ -1,4 +1,4 @@
-# Justfile for TRITON-SWMM_toolkit
+# Justfile for hhemt
 
 # Show available commands
 list:

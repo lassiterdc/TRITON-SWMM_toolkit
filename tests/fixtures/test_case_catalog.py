@@ -23,7 +23,7 @@ import pandas as pd
 import platformdirs
 import pytest
 
-import TRITON_SWMM_toolkit.constants as cnst
+import hhemt.constants as cnst
 
 from tests.fixtures import worktree_slug
 
@@ -32,10 +32,10 @@ from tests.fixtures.test_case_builder import (
     retrieve_synth_TRITON_SWMM_test_case,
     retrieve_TRITON_SWMM_test_case,
 )
-from TRITON_SWMM_toolkit.examples import NorfolkIreneExample
+from hhemt.examples import NorfolkIreneExample
 
 if TYPE_CHECKING:
-    from TRITON_SWMM_toolkit.platform_configs import PlatformConfig
+    from hhemt.platform_configs import PlatformConfig
 
 
 def _require_cpu_cores_for_sensitivity(min_cores: int = 4) -> None:
@@ -55,7 +55,7 @@ def _require_cpu_cores_for_sensitivity(min_cores: int = 4) -> None:
 
 @dataclass
 class all_examples:
-    from TRITON_SWMM_toolkit.examples import TRITON_SWMM_example
+    from hhemt.examples import TRITON_SWMM_example
 
     @staticmethod
     def ex_Nrflk(download_if_exists: bool = False) -> TRITON_SWMM_example:
@@ -73,7 +73,7 @@ class GetTS_TestCases:
     - Isolated test directories
 
     Platform-specific methods use centralized PlatformConfig instances from
-    TRITON_SWMM_toolkit._testing.platform_configs to eliminate configuration duplication.
+    hhemt._testing.platform_configs to eliminate configuration duplication.
 
     Caching Strategy:
         Use start_from_scratch=False to reuse processed inputs from previous runs,
@@ -922,7 +922,7 @@ class Local_TestCases:
         """Phase 1 R3 — row with both system_config_yaml AND system.* → ConfigurationError."""
         _require_cpu_cores_for_sensitivity()
         dest_dir = (
-            Path(platformdirs.user_cache_dir("TRITON_SWMM_toolkit"))
+            Path(platformdirs.user_cache_dir("hhemt"))
             / "synthetic_test_runs"
             / worktree_slug()
             / "_sensitivity_configs"
@@ -1124,7 +1124,7 @@ class Local_TestCases:
         # Per-worktree rooting matches test_case_builder so concurrent runs in
         # sibling worktrees do not race on the sensitivity CSV.
         runs_root = (
-            Path(platformdirs.user_cache_dir("TRITON_SWMM_toolkit"))
+            Path(platformdirs.user_cache_dir("hhemt"))
             / "synthetic_test_runs"
             / worktree_slug()
         )

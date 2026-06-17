@@ -1,6 +1,6 @@
 # Environment Snapshot Documentation
 
-This directory contains versioned snapshots of the TRITON-SWMM_toolkit environment to ensure reproducible installations across different machines and teams.
+This directory contains versioned snapshots of the hhemt environment to ensure reproducible installations across different machines and teams.
 
 ## Files Included
 
@@ -39,13 +39,13 @@ This is the most reliable method as it captures all dependencies exactly as they
 ```bash
 # Clean slate - remove old environment if it exists
 conda deactivate
-conda env remove -n triton_swmm_toolkit
+conda env remove -n hhemt
 
 # Create environment from lock file
 conda env create -f environment-lock.yaml
 
 # Activate the environment
-conda activate triton_swmm_toolkit
+conda activate hhemt
 ```
 
 #### Using on HPC systems (with module system):
@@ -57,7 +57,7 @@ module load miniforge  # or conda/mamba module on your system
 conda env create -f environment-lock.yaml
 
 # Activate
-conda activate triton_swmm_toolkit
+conda activate hhemt
 ```
 
 ### Option 2: Update Existing Environment
@@ -66,7 +66,7 @@ If you already have the environment and just want to update it:
 
 ```bash
 # Activate your existing environment
-conda activate triton_swmm_toolkit
+conda activate hhemt
 
 # Update to match the lock file
 conda env update -f environment-lock.yaml --prune
@@ -78,10 +78,10 @@ If you prefer or need to use pip only:
 
 ```bash
 # Create a Python 3.11 environment
-conda create -n triton_swmm_toolkit python=3.11
+conda create -n hhemt python=3.11
 
 # Activate it
-conda activate triton_swmm_toolkit
+conda activate hhemt
 
 # Install from requirements file
 pip install -r requirements-pinned.txt
@@ -131,7 +131,7 @@ When you install new packages or update existing ones in your environment, regen
 
 ```bash
 # With conda
-conda env export -n triton_swmm_toolkit > environment-lock.yaml
+conda env export -n hhemt > environment-lock.yaml
 
 # With pip
 pip freeze > requirements-pinned.txt
@@ -164,7 +164,7 @@ Or for Docker:
 
 ```dockerfile
 RUN conda env create -f environment-lock.yaml
-RUN echo "conda activate triton_swmm_toolkit" >> ~/.bashrc
+RUN echo "conda activate hhemt" >> ~/.bashrc
 ```
 
 ## Questions?
