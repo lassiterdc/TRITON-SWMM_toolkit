@@ -57,14 +57,9 @@ UVA_GLOBUS_SCRATCH_BASE = "/scratch/{username}"  # expand with os.getenv("USER")
 
 FRONTIER_GLOBUS_COLLECTION_NAME = "OLCF DTN (Globus 5)"
 FRONTIER_GLOBUS_COLLECTION_UUID = "36d521b3-c182-4071-b7d5-91db5d380d42"
-FRONTIER_GLOBUS_SCRATCH_BASE = "/lustre/orion/atm112/scratch/{username}"
-FRONTIER_GLOBUS_PROJECT_BASE = "/lustre/orion/atm112/proj-shared"
-
-DESKTOP_GLOBUS_COLLECTION_NAME = "Desktop"
-DESKTOP_GLOBUS_COLLECTION_UUID = "507d4181-1fe7-11f1-8543-02ea150f82e1"
-
-LAPTOP_GLOBUS_COLLECTION_NAME = "personal_laptop"
-LAPTOP_GLOBUS_COLLECTION_UUID = "d6980688-1d51-11ec-a47a-a50ad076c282"
+# Substitute {project} with your OLCF allocation and {username} with your OLCF user.
+FRONTIER_GLOBUS_SCRATCH_BASE = "/lustre/orion/{project}/scratch/{username}"
+FRONTIER_GLOBUS_PROJECT_BASE = "/lustre/orion/{project}/proj-shared"
 
 # System-name-to-endpoint mapping for PostRunTransferConfig.
 # Keys are system names ("uva", "frontier") used by PostRunTransferConfig.
